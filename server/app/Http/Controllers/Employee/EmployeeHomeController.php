@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employee;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class EmployeeHomeController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('guest:employee')->except('logout');
     }
 
     /**
@@ -23,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->route('employee.emplyee_home');
+        return view('employee.home');
     }
 }

@@ -14,13 +14,15 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 Route::prefix('employee')->namespace('Employee')->name('employee.')->group(function () {
     Auth::routes();
+
+    Route::get('/', 'EmployeeHomeController@index')->name('emplyee_home');
 });

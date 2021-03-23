@@ -40,7 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'employee' => [
+            'driver' => 'session',
+            'provider' => 'employees',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -70,7 +73,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\User::class,
         ],
-
+        'employees' => [
+            'driver' => 'eloquent',
+            'model' => App\Employee::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
@@ -99,19 +105,23 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-    ],
+        ],
+        'employees' => [
+            'provider' => 'employees',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        /*
+        |--------------------------------------------------------------------------
+        | Password Confirmation Timeout
+        |--------------------------------------------------------------------------
+        |
+        | Here you may define the amount of seconds before a password confirmation
+        | times out and the user is prompted to re-enter their password via the
+        | confirmation screen. By default, the timeout lasts for three hours.
+        |
+        */
 
-    /*
-    |--------------------------------------------------------------------------
-    | Password Confirmation Timeout
-    |--------------------------------------------------------------------------
-    |
-    | Here you may define the amount of seconds before a password confirmation
-    | times out and the user is prompted to re-enter their password via the
-    | confirmation screen. By default, the timeout lasts for three hours.
-    |
-    */
-
-    'password_timeout' => 10800,
-
+        'password_timeout' => 10800,
 ];
