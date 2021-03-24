@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
 
 class HomeController extends Controller
 {
@@ -13,6 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        // 'auth' => \App\Http\Middleware\Authenticate::class,
         $this->middleware('auth');
     }
 
@@ -23,6 +25,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return redirect()->route('employee.emplyee_home');
+        return redirect(RouteServiceProvider::EMPLOYEE_HOME);
     }
 }

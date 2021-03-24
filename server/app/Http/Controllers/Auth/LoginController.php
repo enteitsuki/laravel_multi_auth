@@ -27,7 +27,7 @@ class LoginController extends Controller
      * @var string
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
-    protected $redirectTo = RouteServiceProvider::EMPLOYEE_HOME;
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -36,6 +36,9 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        //  $guard == 'web'のときはredirect(RouteServiceProvider::HOME)
+        //  $guard == 'employee'のときはredirect(RouteServiceProvider::EMPLOYEE_HOME)
+        $this->middleware('guest')->except('logout');;
     }
 }

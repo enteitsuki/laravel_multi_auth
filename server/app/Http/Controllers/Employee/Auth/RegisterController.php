@@ -39,7 +39,12 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:employee');
+        // 'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        //  $guard == 'web'のときはredirect(RouteServiceProvider::HOME)
+        //  $guard == 'employee'のときはredirect(RouteServiceProvider::EMPLOYEE_HOME)
+        // authミドルウェアをルートに対し指定するときに、そのユーザーに対し認証を実行するガードを指定することもできます。
+        // 指定されたガードは、auth.php設定ファイルのguards配列のキーを指定します。
+        $this->middleware('guest:employee')->except('logout');
     }
 
     public function showRegistrationForm()

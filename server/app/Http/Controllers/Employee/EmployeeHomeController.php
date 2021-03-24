@@ -14,7 +14,10 @@ class EmployeeHomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:employee')->except('logout');
+        // 'auth' => \App\Http\Middleware\Authenticate::class
+        // authミドルウェアをルートに対し指定するときに、そのユーザーに対し認証を実行するガードを指定することもできます。
+        // 指定されたガードは、auth.php設定ファイルのguards配列のキーを指定します。
+        $this->middleware('auth:employee');
     }
 
     /**
